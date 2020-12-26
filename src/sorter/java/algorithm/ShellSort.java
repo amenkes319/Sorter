@@ -1,6 +1,11 @@
 package sorter.java.algorithm;
 
-public class ShellSort
-{
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
 
+public class ShellSort implements Sort
+{
+	public void sort(ObservableList<Node> list)
+	{
+	}
 }

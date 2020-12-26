@@ -13,8 +13,7 @@ public class Main extends Application
 
 	public void start(Stage stage)
 	{
-		Controller controller = new Controller();
-		controller.show(stage);
+		Controller.INSTANCE.show(stage);
 	}
 
 }

@@ -1,6 +1,11 @@
 package sorter.java.algorithm;
 
-public class RadixSort
-{
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
 
+public class RadixSort implements Sort
+{
+	public void sort(ObservableList<Node> list)
+	{
+	}
 }

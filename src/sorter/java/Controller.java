@@ -1,23 +1,25 @@
 package sorter.java;
 
-import java.util.Collections;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import sorter.java.algorithm.BubbleSort;
 
 public class Controller
 {
+	public static final Controller INSTANCE = new Controller();
+	
 	private enum Algorithm
 	{
 		BEAD_SORT("Bead Sort"), BLOCK_SORT("Block Sort"), BUBBLE_SORT("Bubble Sort"), COCKTAIL_SORT("Cocktail Sort"),
@@ -105,7 +107,11 @@ public class Controller
 		
 		btnStart.setOnAction(e ->
 		{
-			BubbleSort.sort(hboxCenter.getChildren());
+			BubbleSort.INSTANCE.sort(hboxCenter.getChildren());
+			btnStart.setDisable(true);
+			slderSize.setDisable(true);
+			btnRandom.setDisable(true);
+			
 //			Algorithm algo = null;
 //			if (dropSorter.getValue() != null)
 //			{
@@ -113,6 +119,26 @@ public class Controller
 //				System.out.println(algo.name());
 //			}
 		});
+		
+		btnStop.setOnAction(e ->
+		{
+			BubbleSort.INSTANCE.stop();
+			paintWhite();
+		});
+		
+		btnRandom.setOnAction(e ->
+		{
+			FXCollections.shuffle(hboxCenter.getChildren());
+		});
+	}
+	
+	private void paintWhite()
+	{
+		for (Node n : hboxCenter.getChildren())
+		{
+			Rectangle r = (Rectangle) n;
+			r.setFill(Color.WHITE);
+		}
 	}
 	
 	private void fillRects(double max)
@@ -122,9 +148,18 @@ public class Controller
     	{
     		double width = Math.pow(Math.E, -.03 * (max - 150)) + 10;
     		double height = 7.5*i + 50;
-    		hboxCenter.getChildren().add(new Rectangle(width, height));
+    		Rectangle r = new Rectangle(width, height);
+    		r.setFill(Color.WHITE);
+    		hboxCenter.getChildren().add(r);
     	}
     	
     	FXCollections.shuffle(hboxCenter.getChildren());
+	}
+	
+	public void enable()
+	{
+		btnStart.setDisable(false);
+		slderSize.setDisable(false);
+		btnRandom.setDisable(false);
 	}
 }

@@ -1,10 +1,12 @@
 package sorter.java.algorithm;
 
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
 
-public class InsertionSort
+public class InsertionSort implements Sort
 {
-	public static void sort(Rectangle[] a)
+	public void sort(Rectangle[] a)
 	{
         for (int i = 1; i < a.length; ++i)
         { 
@@ -18,5 +20,10 @@ public class InsertionSort
             
             a[j + 1].setHeight(key); 
         } 
+	}
+
+	@Override
+	public void sort(ObservableList<Node> list)
+	{
 	}
 }
