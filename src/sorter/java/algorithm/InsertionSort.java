@@ -4,7 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
 
-public class InsertionSort implements Sort
+public class InsertionSort extends Sort
 {
 	public void sort(Rectangle[] a)
 	{

@@ -10,13 +10,10 @@ import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-import sorter.java.Controller;
 
-public class BubbleSort implements Sort
+public class BubbleSort extends Sort
 {
 	public static final BubbleSort INSTANCE = new BubbleSort();
-	
-	private Timeline timeline;
 
 	public void sort(ObservableList<Node> list)
 	{
@@ -64,11 +61,5 @@ public class BubbleSort implements Sort
 
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeline.play();
-	}
-
-	public void stop()
-	{
-		timeline.stop();
-		Controller.INSTANCE.enable();
 	}
 }

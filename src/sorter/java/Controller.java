@@ -14,7 +14,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import sorter.java.algorithm.BubbleSort;
+
+import sorter.java.algorithm.*;
 
 public class Controller
 {
@@ -107,7 +108,18 @@ public class Controller
 		
 		btnStart.setOnAction(e ->
 		{
-			BubbleSort.INSTANCE.sort(hboxCenter.getChildren());
+			switch (dropSorter.getValue())
+			{
+			case "Bubble Sort" :
+				BubbleSort.INSTANCE.sort(hboxCenter.getChildren());
+				
+				break;
+				
+			case "Selection Sort" :
+				SelectionSort.INSTANCE.sort(hboxCenter.getChildren());
+				
+				break;
+			}
 			btnStart.setDisable(true);
 			slderSize.setDisable(true);
 			btnRandom.setDisable(true);
